@@ -14,9 +14,10 @@
 
 ## Stage 2 - Basic feature
 
-- [ ] Logout function
+- [x] Logout function
+- [x] Middleware for authentication
+- [ ] Navigation Bottom
 - [ ] Profile page, change user info
-- [ ] Middleware for authentication
 - [ ] Nested route
 - [ ] List wallet
 - [ ] Action manage list wallet
