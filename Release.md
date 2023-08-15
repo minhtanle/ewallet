@@ -16,8 +16,8 @@
 
 - [x] Logout function
 - [x] Middleware for authentication
-- [ ] Navigation Bottom
+- [x] Navigation Bottom
 - [ ] Profile page, change user info
-- [ ] Nested route
+- [x] Nested route
 - [ ] List wallet
 - [ ] Action manage list wallet

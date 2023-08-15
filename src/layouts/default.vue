@@ -1,4 +1,14 @@
 <template lang="">
-  <div>Default layout</div>
   <slot />
+  <NavigationBottom />
 </template>
+
+<script>
+import NavigationBottom from "@/components/NavigationBottom.vue";
+
+export default {
+  components: {
+    NavigationBottom,
+  },
+};
+</script>
