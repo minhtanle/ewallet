@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="">
     <!-- Avatar -->
     <div class="container mx-auto p-4 flex flex-col items-center">
       <div class="w-24 h-24">
@@ -10,20 +10,20 @@
         />
       </div>
       <h3 class="font-bold text-2xl text-primary mt-2 text-blue-600">
-        Minh Tân Lê
+        {{ user.displayName }}
       </h3>
-      <span>email@gmai.com</span>
+      <span>{{ user.email }}</span>
     </div>
 
     <hr />
 
-    <div class="grid grid-cols-1 p-2">
+    <div class="grid grid-cols-1">
       <div class="col-span-1">
         <ul>
           <li
             v-for="profileOption in profileOptions"
             :key="profileOption.name"
-            class="last:text-red-600 hover:bg-slate-50 py-2"
+            class="hover:bg-slate-50 py-2 px-4"
           >
             <router-link
               :to="profileOption.route"
@@ -46,9 +46,13 @@
 
 <script>
 import { reactive } from "vue";
+import { useUser } from "@/composables/useUser";
 
 export default {
   setup() {
+    const { getUser } = useUser();
+    const { user } = getUser();
+
     const profileOptions = reactive([
       {
         name: "my-wallet",
@@ -59,16 +63,16 @@ export default {
         },
       },
       {
-        name: "my-wallet",
-        icon: ["fas", "wallet"],
+        name: "logout",
+        icon: ["fas", "right-from-bracket"],
         route: {
-          name: "Profile",
+          name: "Logout",
           params: {},
         },
       },
     ]);
 
-    return { profileOptions };
+    return { user, profileOptions };
   },
 };
 </script>

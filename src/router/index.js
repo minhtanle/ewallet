@@ -1,12 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { projectAuth } from "@/configs/firebase";
+
+// Auth Guards
+const requireAuth = (to, from, next) => {
+  const user = projectAuth.currentUser;
+
+  if (!user) {
+    next({ name: "Login" });
+  } else {
+    next();
+  }
+};
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: function () {
-      return import(/* webpackChunkName: "home" */ "../views/index.vue");
-    },
+    component: () =>
+      import(/* webpackChunkName: "home" */ "../views/index.vue"),
   },
   {
     path: "/login",
@@ -14,9 +25,7 @@ const routes = [
     meta: {
       layout: "auth",
     },
-    component: function () {
-      return import(/* webpackChunkName: "login" */ "../views/login.vue");
-    },
+    component: () => import("../views/login.vue"),
   },
   {
     path: "/register",
@@ -24,9 +33,7 @@ const routes = [
     meta: {
       layout: "auth",
     },
-    component: function () {
-      return import(/* webpackChunkName: "register" */ "../views/register.vue");
-    },
+    component: () => import("../views/register.vue"),
   },
   {
     path: "/profile",
@@ -34,9 +41,14 @@ const routes = [
     meta: {
       layout: "system",
     },
-    component: function () {
-      return import(/* webpackChunkName: "profile" */ "../views/profile.vue");
-    },
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/profile.vue"),
+    beforeEnter: requireAuth,
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    component: () => import("../views/logout.vue"),
   },
 ];
 
