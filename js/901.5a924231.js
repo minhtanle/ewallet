@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkewallet"]=self["webpackChunkewallet"]||[]).push([[901],{901:function(e,t,n){n.r(t),n.d(t,{default:function(){return f}});var r=n(252);const u={class:"text-center uppercase text-2xl mt-10"};function a(e,t){return(0,r.wg)(),(0,r.iD)("div",u,"404 page not found !!!")}var c=n(744);const s={},l=(0,c.Z)(s,[["render",a]]);var f=l}}]);
+//# sourceMappingURL=901.5a924231.js.map

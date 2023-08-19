@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkewallet"]=self["webpackChunkewallet"]||[]).push([[710],{710:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var r=n(252);function u(e,t){return(0,r.WI)(e.$slots,"default")}var a=n(744);const l={},s=(0,a.Z)(l,[["render",u]]);var c=s}}]);
+//# sourceMappingURL=710.7f94ed6c.js.map
