@@ -10,6 +10,7 @@ import "./assets/styles/global.css";
 
 /* Import component */
 import { registerGlobalComponent } from "./utils/import";
+import { registerGlobalFilter } from "./utils/filter";
 
 let app;
 
@@ -18,6 +19,8 @@ projectAuth.onAuthStateChanged(() => {
     app = createApp(App);
 
     registerGlobalComponent(app);
+
+    registerGlobalFilter(app);
 
     app.use(router);
 

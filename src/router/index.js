@@ -55,19 +55,58 @@ const routes = [
     ],
   },
   {
+    path: "/profile",
+    name: "Profile",
+    component: () => import("../views/profile.vue"),
+    beforeEnter: requireAuth,
+    children: [
+      {
+        path: "wallet",
+        name: "Profile.Wallet",
+        meta: {
+          isChild: true,
+        },
+        component: () => import("../views/wallet.vue"),
+      },
+      {
+        path: "wallet/:id/update",
+        name: "Profile.Wallet.Update",
+        meta: {
+          isChild: true,
+        },
+        component: () => import("../views/wallet/update.vue"),
+      },
+    ],
+  },
+  {
+    path: "/wallet",
+    name: "Wallet",
+    component: () => import("../views/wallet.vue"),
+    beforeEnter: requireAuth,
+  },
+  {
     path: "/budget",
     name: "Budget",
     component: () => import("../views/index.vue"),
     beforeEnter: requireAuth,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: () =>
-      import(/* webpackChunkName: "profile" */ "../views/profile.vue"),
-    beforeEnter: requireAuth,
+    path: "/:pathMatch(.*)*",
+    name: "Error404",
+    component: () => import("../views/404.vue"),
   },
 ];
+
+routes.map((route) => {
+  if (route.children) {
+    route.children.map(
+      (child) =>
+        (child.meta = {
+          isChild: true,
+        })
+    );
+  }
+});
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

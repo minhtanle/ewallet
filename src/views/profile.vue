@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div v-if="!route.meta.isChild" class="">
     <!-- Avatar -->
     <div class="container mx-auto p-4 flex flex-col items-center">
       <div class="w-24 h-24">
@@ -23,15 +23,17 @@
           <li
             v-for="profileOption in profileOptions"
             :key="profileOption.name"
-            class="hover:bg-slate-50 py-2 px-4"
+            class="flex h-14 py-2 px-4 bg-white hover:bg-slate-50 shadow last:text-red-600"
           >
             <router-link
-              :to="profileOption.route"
-              class="flex justify-between items-center"
+              :to="{ name: profileOption.route.name }"
+              class="flex items-center w-full"
             >
-              <div class="flex items-center text-left">
-                <font-awesome-icon :icon="profileOption.icon" />
-                <h5 class="pl-4">{{ $t(profileOption.name) }}</h5>
+              <div class="grow w-full">
+                <div class="flex items-center text-left">
+                  <font-awesome-icon :icon="profileOption.icon" size="lg" />
+                  <h5 class="pl-4">{{ $t(profileOption.name) }}</h5>
+                </div>
               </div>
               <div class="text-right">
                 <font-awesome-icon :icon="['fas', 'chevron-right']" />
@@ -42,24 +44,27 @@
       </div>
     </div>
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
 import { reactive } from "vue";
 import { useUser } from "@/composables/useUser";
+import { useRoute } from "vue-router";
 
 export default {
   setup() {
     const { getUser } = useUser();
     const { user } = getUser();
 
+    const route = useRoute();
+
     const profileOptions = reactive([
       {
         name: "my-wallet",
         icon: ["fas", "wallet"],
         route: {
-          name: "Home",
-          params: {},
+          name: "Profile.Wallet",
         },
       },
       {
@@ -72,7 +77,7 @@ export default {
       },
     ]);
 
-    return { user, profileOptions };
+    return { route, user, profileOptions };
   },
 };
 </script>

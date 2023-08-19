@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer" class="fixed bottom-0 w-full">
+  <footer id="footer" class="fixed bottom-0 w-full bg-white">
     <div class="bottom-0 drop-shadow-md h-16 shadow-slate-400 border-t-1">
       <ul class="h-full flex flex-row justify-around items-center">
         <li v-for="(menu, index) of menus" :key="index">

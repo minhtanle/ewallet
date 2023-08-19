@@ -17,7 +17,13 @@
 - [x] Logout function
 - [x] Middleware for authentication
 - [x] Navigation Bottom
-- [ ] Profile page, change user info
+- [x] Navigation Top
+- [x] Wallet page: create, update, delete
 - [x] Nested route
-- [ ] List wallet
-- [ ] Action manage list wallet
+
+## Stage 3 - Transaction
+
+- [ ] View transaction
+- [ ] Add transaction
+- [ ] Edit transaction
+- [ ] Delete transaction

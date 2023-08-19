@@ -1,4 +1,5 @@
 import { defineAsyncComponent } from "vue";
+import useClickOutSide from "@/composables/useClickOutSide";
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -31,4 +32,6 @@ export function registerGlobalComponent(app) {
   );
 
   app.component("font-awesome-icon", FontAwesomeIcon);
+
+  app.directive("click-outside", useClickOutSide);
 }

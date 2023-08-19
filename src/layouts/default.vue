@@ -1,5 +1,7 @@
 <template lang="">
-  <slot />
+  <div class="pb-16">
+    <slot />
+  </div>
   <NavigationBottom />
 </template>
 
